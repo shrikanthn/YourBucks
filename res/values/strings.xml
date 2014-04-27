@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">YourBucks</string>
+    <string name="action_settings">Settings</string>
+    <string name="search_label">Enter serach term</string>
+    <string name="auto_complete_colors">Auto Complete Colors...</string>
+    <string name="multi_auto_complete_colors">Multi Auto Complete Colors...</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="hello_world">Enter a term</string>
+    <string name="btn_label">Hit Me!</string>
+    <string name="btn_label_fetch">Fetch</string>
+
+</resources>
