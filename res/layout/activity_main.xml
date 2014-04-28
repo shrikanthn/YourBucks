@@ -8,36 +8,288 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:id="@+id/txtHelloWorld"
-        android:layout_width="wrap_content"
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteStockSymbol"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:layout_toLeftOf="@+id/button1"
+        android:ems="10" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/autoCompleteStockSymbol"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1"
+        android:text="Search" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="38dp"
-        android:text="@string/search_label" />
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtHelloWorld"
-        android:layout_below="@+id/txtHelloWorld"
-        android:layout_marginTop="20dp"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
-
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp"
-        android:ems="10"
-        android:text="AutoCompleteTextView" />
+        android:text="Stock Search" />
+
+    <TextView
+        android:id="@+id/StockHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/autoCompleteStockSymbol"
+        android:layout_centerHorizontal="true"
+        android:text="Header"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/StockValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/StockHeader"
+        android:layout_centerHorizontal="true"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/textView2"
+        android:paddingTop="5dip"
+        android:text="Open"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/TextView02"
+        android:layout_alignLeft="@+id/TextView01"
+        android:layout_alignRight="@+id/TextView01"
+        android:gravity="right"
+        android:paddingTop="5dip"
+        android:text="1,111"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView02"
+        android:layout_below="@+id/TextView02"
+        android:paddingTop="5dip"
+        android:text="Bid"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView05"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView03"
+        android:layout_alignRight="@+id/TextView03"
+        android:layout_below="@+id/TextView03"
+        android:gravity="right"
+        android:paddingTop="5dip"
+        android:text="1,111"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView06"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView04"
+        android:layout_below="@+id/TextView04"
+        android:layout_toLeftOf="@+id/textView1"
+        android:paddingTop="5dip"
+        android:text="Ask"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView07"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TextView06"
+        android:layout_alignBottom="@+id/TextView06"
+        android:layout_alignLeft="@+id/TextView05"
+        android:layout_alignRight="@+id/TextView05"
+        android:gravity="right"
+        android:paddingTop="5dip"
+        android:text="1,111"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView09"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TextView08"
+        android:layout_alignBottom="@+id/TextView08"
+        android:layout_alignLeft="@+id/TextView07"
+        android:layout_alignRight="@+id/TextView07"
+        android:gravity="right"
+        android:paddingTop="5dip"
+        android:text="1,111"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView08"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView06"
+        android:layout_below="@+id/TextView06"
+        android:paddingTop="5dip"
+        android:text="1st Yr Target"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView09"
+        android:layout_alignRight="@+id/TextView09"
+        android:layout_below="@+id/TextView09"
+        android:gravity="right"
+        android:paddingTop="5dip"
+        android:text="1,111"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TextView11"
+        android:layout_alignBottom="@+id/TextView11"
+        android:layout_alignLeft="@+id/TextView08"
+        android:paddingTop="5dip"
+        android:text="Day Range"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView10"
+        android:layout_below="@+id/TextView10"
+        android:paddingTop="5dip"
+        android:text="52wk Range"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TextView12"
+        android:layout_alignBottom="@+id/TextView12"
+        android:layout_alignLeft="@+id/TextView11"
+        android:layout_alignRight="@+id/TextView11"
+        android:paddingTop="5dip"
+        android:text="52 wk rg"
+        android:gravity="right"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView12"
+        android:layout_below="@+id/TextView12"
+        android:layout_toLeftOf="@+id/textView1"
+        android:paddingTop="5dip"
+        android:text="Volume"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/Volume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TextView14"
+        android:layout_alignBottom="@+id/TextView14"
+        android:layout_alignLeft="@+id/TextView13"
+        android:layout_alignRight="@+id/TextView13"
+        android:paddingTop="5dip"
+        android:gravity="right"
+        android:text="vol"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView14"
+        android:layout_below="@+id/TextView14"
+        android:paddingTop="5dip"
+        android:text="Avg Vol(3m)"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/AvgVol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TextView16"
+        android:layout_alignBottom="@+id/TextView16"
+        android:layout_alignLeft="@+id/Volume"
+        android:layout_alignRight="@+id/Volume"
+        android:paddingTop="5dip"
+        android:gravity="right"
+        android:text="avg vol"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/MarketCapVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TextView18"
+        android:layout_alignBottom="@+id/TextView18"
+        android:layout_alignLeft="@+id/AvgVol"
+        android:layout_alignRight="@+id/AvgVol"
+        android:paddingTop="5dip"
+        android:gravity="right"
+        android:text="mar"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView16"
+        android:layout_below="@+id/TextView16"
+        android:paddingTop="5dip"
+        android:text="Market Cap"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/StockIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/StockValue"
+        android:layout_centerHorizontal="true"
+        android:text="StockIndicator"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/autoCompleteStockSymbol"
+        android:layout_below="@+id/StockIndicator"
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@+id/StockIndicator"
+        android:paddingTop="5dip"
+        android:text="Prev Close"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/TextView03"
+        android:layout_alignLeft="@+id/StockHeader"
+        android:layout_alignRight="@+id/button1"
+        android:gravity="right"
+        android:paddingTop="5dip"
+        android:text="1,111"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
