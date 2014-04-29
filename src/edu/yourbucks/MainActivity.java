@@ -24,6 +24,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -44,6 +45,8 @@ import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
+	
+	private JSONObject stocks;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +105,22 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
-
+		
+		
+		
+		final Intent intent = new Intent(this, NewsActivity.class);
+		button = (Button) findViewById(R.id.Button01);
+		button.setOnClickListener(new OnClickListener()
+		{
+			public void onClick(View v)
+			{
+				AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autoCompleteStockSymbol);
+				intent.putExtra("term", textView.getText().toString().trim());
+				startActivity(intent);
+			}
+		});
+		
+		
 	}
 
 	@Override
@@ -279,10 +297,15 @@ public class MainActivity extends Activity {
 	private JSONObject getData(String term){
 
 		// clean the term
-    	if(term.indexOf(')') > 0 && term.indexOf('(') > 0) {
-    		int st = term.indexOf('(') + 1;
-    		int ed = term.indexOf(')');
-    		term = term.substring(st, ed);
+//    	if(term.indexOf(')') > 0 && term.indexOf('(') > 0) {
+//    		int st = term.indexOf('(') + 1;
+//    		int ed = term.indexOf(')');
+//    		term = term.substring(st, ed);
+//    		Log.i("search term", term);
+//    	}
+    	if(term.indexOf(',') > 0) {
+    		int ed = term.indexOf(',');
+    		term = term.substring(0, ed);
     		Log.i("search term", term);
     	}
     	
@@ -325,6 +348,7 @@ public class MainActivity extends Activity {
 		            	 retVal.getJSONObject("result").put("Name",""); 
 		             }
 	             }
+	             this.stocks = retVal;
 	             return retVal;
 	         }
 	     }catch (Exception e){
@@ -391,6 +415,8 @@ public class MainActivity extends Activity {
     	((TextView)findViewById(R.id.Volume)).setVisibility(val);
     	((ImageView)findViewById(R.id.stockChartImage)).setVisibility(val);
     	((TextView)findViewById(R.id.StockIndicator)).setVisibility(val);
+    	((Button)findViewById(R.id.Button01)).setVisibility(val);
+    	((Button)findViewById(R.id.button2)).setVisibility(val);
     }
 
 }
