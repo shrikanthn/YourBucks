@@ -53,7 +53,7 @@ public class NewsActivity extends Activity {
 				final AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
 				builder2.setMessage("No news fetched")
 				.setCancelable(false)
-				.setPositiveButton("View", new DialogInterface.OnClickListener() {
+				.setPositiveButton("Info", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
 					}
