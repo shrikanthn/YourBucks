@@ -15,16 +15,23 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Filter;
 import android.widget.Filterable;
 
 public class CustomAutoCompleteAdaptor extends ArrayAdapter<String> implements Filterable {
     private ArrayList<String> resultList;
+    private ArrayList<String> symbol;
 
     public CustomAutoCompleteAdaptor(Context context, String nameFilter) {
     	super(context, android.R.layout.simple_dropdown_item_1line);
     	resultList = new ArrayList<String>();
+    	symbol = new ArrayList<String>();
     }
 
     @Override
@@ -34,7 +41,15 @@ public class CustomAutoCompleteAdaptor extends ArrayAdapter<String> implements F
 
     @Override
     public String getItem(int index) {
+    	if(index > resultList.size() || index < 0) {
+    		return "";
+    	}
         return resultList.get(index);
+    }
+    
+    public String getItemAtPosition(int index) {
+    	Log.i("********  symbol"," " + symbol.get(index));
+    	return symbol.get(index);
     }
 
     @Override
@@ -45,7 +60,7 @@ public class CustomAutoCompleteAdaptor extends ArrayAdapter<String> implements F
                 FilterResults filterResults = new FilterResults();
                 if (constraint != null) {
                     // Retrieve the autocomplete results.
-                    resultList = getData(constraint.toString());
+                    getData(constraint.toString());
 
                     // Assign the data to the FilterResults
                     filterResults.values = resultList;
@@ -67,8 +82,10 @@ public class CustomAutoCompleteAdaptor extends ArrayAdapter<String> implements F
     }
     
     
-    private ArrayList<String> getData(String term){
+    private void getData(String term){
 
+    	this.symbol = new ArrayList<String>();
+    	this.resultList = new ArrayList<String>();
 		String url;
 		if(term.length() < 1) {
 			url = "http://autoc.finance.yahoo.com/autoc?query=goog&callback=YAHOO.Finance.SymbolSuggest.ssCallback";
@@ -98,17 +115,15 @@ public class CustomAutoCompleteAdaptor extends ArrayAdapter<String> implements F
 	             
 	             JSONObject jsonObject = new JSONObject(stringBuilder.toString().substring(stringBuilder.indexOf("(") + 1, stringBuilder.lastIndexOf(")")));
 	             JSONArray quote = jsonObject.getJSONObject("ResultSet").getJSONArray("Result");
-	             ArrayList<String> list = new ArrayList<String>();
 	             for(int i=0 ; i<quote.length(); i++) {
 	            	 JSONObject obj = quote.getJSONObject(i);
-	            	 list.add(obj.getString("name") + "(" + obj.getString("symbol") + ")");
+	            	 this.resultList.add(obj.getString("symbol")+", " + obj.getString("name") + "(" + obj.getString("exch") + ")");
+	            	 this.symbol.add(obj.getString("symbol"));
 	             }
-	             Log.i("total keys", " - " + list.size());
-	             return list;
+	             Log.i("total keys", " - " + this.resultList.size());
 	         }
 	     }catch (Exception e){
 	    	 e.printStackTrace();
 	     }
-	     return new ArrayList<String>();
 	}
 }

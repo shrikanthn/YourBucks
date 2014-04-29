@@ -62,20 +62,22 @@ public class MainActivity extends Activity {
 		        InputMethodManager imm = (InputMethodManager)getSystemService(
 					      Context.INPUT_METHOD_SERVICE);
 					imm.hideSoftInputFromWindow(textView2.getWindowToken(), 0);
-					textView2.setText(selection.subSequence(0, selection.indexOf(",")));
-					String editTextStr = textView2.getText().toString(); 
+//					textView2.setText(selection.subSequence(0, selection.indexOf(",")));
+					String editTextStr = selection.substring(0, selection.indexOf(",")); 
+//					textView2.getText().toString(); 
 					JSONObject results = getData(editTextStr);
 					renderStockInfo(results);
 		    }
 		});
 		
 		final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-		alertDialog.setTitle("Reset...");
+		alertDialog.setTitle("Error");
 		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.cancel();
 			}
 		});
+		
 		
 		Button button = (Button) findViewById(R.id.button1);
 		button.setOnClickListener(new OnClickListener()
@@ -91,7 +93,8 @@ public class MainActivity extends Activity {
 					
 				String editTextStr = textView.getText().toString(); 
 				if(editTextStr.trim().length() < 1) {
-					alertDialog.setMessage("You have not extered anything");
+					alertDialog.setMessage("Please enter a stock symbol");
+					hideShowElements(View.INVISIBLE);
 					alertDialog.show();
 				} else {
 					JSONObject results = getData(editTextStr);
@@ -111,8 +114,19 @@ public class MainActivity extends Activity {
 	
 	private void renderStockInfo(JSONObject res) {
 		
+		final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+		alertDialog.setTitle("Error");
+		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+		
 		if(res.has("stock") && res.optJSONObject("stock").has("Error")) {
-			
+			alertDialog.setMessage("Please enter a valid stock symbol");
+			hideShowElements(View.INVISIBLE);
+			alertDialog.show();
+			return;
 		}
 		try {
 			// company symbol and name
@@ -254,34 +268,7 @@ public class MainActivity extends Activity {
 			textViewElement.setText(str);
 			Log.i("MarketCapitalization ", str);
 			
-			((TextView)findViewById(R.id.TextView01)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.TextView02)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.TextView03)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.TextView04)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.TextView05)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.TextView06)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.TextView07)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.TextView08)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.TextView09)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.TextView10)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.TextView11)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.TextView12)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.TextView13)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.TextView14)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.TextView16)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.TextView18)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.textView1)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.textView2)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.StockHeader)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.StockValue)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.AvgVol)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.MarketCapVal)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.Volume)).setVisibility(View.VISIBLE);
-			((ImageView)findViewById(R.id.stockChartImage)).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.StockIndicator)).setVisibility(View.VISIBLE);
-			
-			
-			
+			hideShowElements(View.VISIBLE);
 			
 		} catch (Exception e2) {
 			Log.e(e2.getClass().toString(), e2.getMessage());
@@ -376,6 +363,34 @@ public class MainActivity extends Activity {
         } catch (Exception ex) {
         }
         return inputStream;
+    }
+    
+    private void hideShowElements(int val) {
+    	((TextView)findViewById(R.id.TextView01)).setVisibility(val);
+    	((TextView)findViewById(R.id.TextView02)).setVisibility(val);
+    	((TextView)findViewById(R.id.TextView03)).setVisibility(val);
+    	((TextView)findViewById(R.id.TextView04)).setVisibility(val);
+    	((TextView)findViewById(R.id.TextView05)).setVisibility(val);
+    	((TextView)findViewById(R.id.TextView06)).setVisibility(val);
+    	((TextView)findViewById(R.id.TextView07)).setVisibility(val);
+    	((TextView)findViewById(R.id.TextView08)).setVisibility(val);
+    	((TextView)findViewById(R.id.TextView09)).setVisibility(val);
+    	((TextView)findViewById(R.id.TextView10)).setVisibility(val);
+    	((TextView)findViewById(R.id.TextView11)).setVisibility(val);
+    	((TextView)findViewById(R.id.TextView12)).setVisibility(val);
+    	((TextView)findViewById(R.id.TextView13)).setVisibility(val);
+    	((TextView)findViewById(R.id.TextView14)).setVisibility(val);
+    	((TextView)findViewById(R.id.TextView16)).setVisibility(val);
+    	((TextView)findViewById(R.id.TextView18)).setVisibility(val);
+    	((TextView)findViewById(R.id.textView1)).setVisibility(val);
+    	((TextView)findViewById(R.id.textView2)).setVisibility(val);
+    	((TextView)findViewById(R.id.StockHeader)).setVisibility(val);
+    	((TextView)findViewById(R.id.StockValue)).setVisibility(val);
+    	((TextView)findViewById(R.id.AvgVol)).setVisibility(val);
+    	((TextView)findViewById(R.id.MarketCapVal)).setVisibility(val);
+    	((TextView)findViewById(R.id.Volume)).setVisibility(val);
+    	((ImageView)findViewById(R.id.stockChartImage)).setVisibility(val);
+    	((TextView)findViewById(R.id.StockIndicator)).setVisibility(val);
     }
 
 }
