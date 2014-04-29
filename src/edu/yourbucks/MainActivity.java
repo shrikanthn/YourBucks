@@ -386,6 +386,14 @@ public class MainActivity extends Activity {
     				+ ", <br/>Change: " + changeValue);
     		params.putString("link", "http://finance.yahoo.com/q?s="+res.getJSONObject("result").getString("Symbol"));
     		params.putString("picture", res.getJSONObject("result").getString("StockChartImageURL"));
+    		
+    		
+    		JSONObject newsList = res.getJSONObject("result").getJSONObject("News");
+			if(newsList.has("Error")) {
+				((Button)findViewById(R.id.Button01)).setVisibility(View.INVISIBLE);
+			} else {
+				((Button)findViewById(R.id.Button01)).setVisibility(View.VISIBLE);
+			}
 
 		} catch (Exception e2) {
 			Log.e(e2.getClass().toString(), e2.getMessage());
@@ -514,7 +522,7 @@ public class MainActivity extends Activity {
 		((TextView)findViewById(R.id.Volume)).setVisibility(val);
 		((ImageView)findViewById(R.id.stockChartImage)).setVisibility(val);
 		((TextView)findViewById(R.id.StockIndicator)).setVisibility(val);
-		((Button)findViewById(R.id.Button01)).setVisibility(val);
+		
 		((Button)findViewById(R.id.button2)).setVisibility(val);
 	}
 
