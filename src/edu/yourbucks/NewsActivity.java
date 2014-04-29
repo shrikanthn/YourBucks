@@ -77,6 +77,8 @@ public class NewsActivity extends Activity {
 			ArrayAdapter<String> adaptor = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, title);
 			ListView listView = (ListView)findViewById(R.id.listView1);
 			listView.setAdapter(adaptor);
+			
+			final Intent intentSend = new Intent(this, WebViewActivity.class);
 
 			final ArrayList<String> urls = links;
 			OnItemClickListener listener = new OnItemClickListener() {
@@ -92,9 +94,13 @@ public class NewsActivity extends Activity {
 					.setCancelable(false)
 					.setPositiveButton("View", new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
-							Uri uri = Uri.parse(currentUrl);
-							Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-							startActivity(intent);
+							
+							intentSend.putExtra("url", currentUrl);
+							startActivity(intentSend);
+							
+//							Uri uri = Uri.parse(currentUrl);
+//							Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//							startActivity(intent);
 						}
 					})
 					.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

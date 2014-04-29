@@ -380,7 +380,7 @@ public class MainActivity extends Activity {
 			
 			params = new Bundle();
     		params.putString("name", res.getJSONObject("result").getString("Name"));
-    		params.putString("caption", "Stock Information for " + res.getJSONObject("result").getString("Name") + " ("
+    		params.putString("caption", "Stock Information of " + res.getJSONObject("result").getString("Name") + " ("
     				+ res.getJSONObject("result").getString("Symbol") + ")");
     		params.putString("description", "Last Trade Price : " + res.getJSONObject("result").getJSONObject("Quote").getString("LastTradePriceOnly")
     				+ ", <br/>Change: " + changeValue);
@@ -482,6 +482,7 @@ public class MainActivity extends Activity {
 		InputStream inputStream = null;
 		URL url = new URL(strURL);
 		URLConnection conn = url.openConnection();
+		Log.i("HttpConnection", conn.toString());
 
 		try {
 			HttpURLConnection httpConn = (HttpURLConnection) conn;

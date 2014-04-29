@@ -14,5 +14,6 @@
     <string name="title_activity_scroll">ScrollActivity</string>
     <string name="title_activity_news">NewsActivity</string>
     <string name="app_id">715257055207335</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
 
 </resources>
