@@ -349,20 +349,6 @@
         android:src="@drawable/down_r" />
 
     <TextView
-        android:id="@+id/StockIndicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignRight="@+id/TextView01"
-        android:layout_below="@+id/StockValue"
-        android:gravity="center"
-        android:text="StockIndicator"
-        android:textAlignment="gravity"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold"
-        android:visibility="invisible" />
-
-    <TextView
         android:id="@+id/placerHolderText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -395,6 +381,19 @@
         android:visibility="invisible"
         android:text="News Headlines"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/StockIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/StockValue"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="StockIndicator"
+        android:textAlignment="gravity"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+        android:visibility="invisible" />
 
 </RelativeLayout>
 </ScrollView>

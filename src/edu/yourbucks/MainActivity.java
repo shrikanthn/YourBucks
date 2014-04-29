@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
 		Session.getActiveSession()
 		.onActivityResult(this, requestCode, resultCode, data);
 	}
-
+	
 	private Session.StatusCallback statusCallback = new Session.StatusCallback() {
 
 		@Override
@@ -122,7 +122,12 @@ public class MainActivity extends Activity {
 					// callback after Graph API response with user object
 					@Override
 					public void onCompleted(GraphUser user, Response response) {
-						System.out.println("Hello " + user.getName());
+						if(user == null) {
+							System.out.println("******* ERROR *********" + "Could not find user");
+						} else {
+							System.out.println("Hello " + user.getName());
+						}
+						
 					}
 				});
 			}
@@ -145,17 +150,22 @@ public class MainActivity extends Activity {
 		textView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long rowId) {
+				
 				String selection = (String)parent.getItemAtPosition(position);
 				Log.i("selected : ", selection);
 				AutoCompleteTextView textView2 = (AutoCompleteTextView) findViewById(R.id.autoCompleteStockSymbol);
 				InputMethodManager imm = (InputMethodManager)getSystemService(
 						Context.INPUT_METHOD_SERVICE);
 				imm.hideSoftInputFromWindow(textView2.getWindowToken(), 0);
-				//					textView2.setText(selection.subSequence(0, selection.indexOf(",")));
+//				textView2.setText(selection.subSequence(0, selection.indexOf(",")));
+				textView2.setHint(selection.subSequence(0, selection.indexOf(",")));
+				textView2.dismissDropDown();
+//				
 				String editTextStr = selection.substring(0, selection.indexOf(",")); 
 				//					textView2.getText().toString(); 
 				JSONObject results = getData(editTextStr);
 				renderStockInfo(results);
+				
 			}
 		});
 

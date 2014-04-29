@@ -33,6 +33,7 @@ import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class NewsActivity extends Activity {
 
@@ -77,6 +78,9 @@ public class NewsActivity extends Activity {
 			ArrayAdapter<String> adaptor = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, title);
 			ListView listView = (ListView)findViewById(R.id.listView1);
 			listView.setAdapter(adaptor);
+			Toast.makeText(this.getApplicationContext(), 
+					"Fetched " + title.size() + " news articles", 
+					Toast.LENGTH_LONG).show();
 			
 			final Intent intentSend = new Intent(this, WebViewActivity.class);
 
@@ -97,10 +101,6 @@ public class NewsActivity extends Activity {
 							
 							intentSend.putExtra("url", currentUrl);
 							startActivity(intentSend);
-							
-//							Uri uri = Uri.parse(currentUrl);
-//							Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//							startActivity(intent);
 						}
 					})
 					.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

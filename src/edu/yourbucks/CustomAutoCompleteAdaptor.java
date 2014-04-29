@@ -26,7 +26,7 @@ import android.widget.Filterable;
 
 public class CustomAutoCompleteAdaptor extends ArrayAdapter<String> implements Filterable {
     private ArrayList<String> resultList;
-    private ArrayList<String> symbol;
+    public static ArrayList<String> symbol;
 
     public CustomAutoCompleteAdaptor(Context context, String nameFilter) {
     	super(context, android.R.layout.simple_dropdown_item_1line);
