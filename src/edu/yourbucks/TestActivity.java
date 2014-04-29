@@ -49,7 +49,7 @@ public class TestActivity extends Activity {
 			}
 		});
 		
-		AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView1);
+		AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autoCompleteStockSymbol);
 		textView.setAdapter(new CustomAutoCompleteAdaptor(this, textView.getText().toString()));
 
 		Button button = (Button) findViewById(R.id.btnHit);

@@ -32,7 +32,7 @@
         android:text="@string/btn_label" />
 
     <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView1"
+        android:id="@+id/autoCompleteStockSymbol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -47,8 +47,8 @@
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/autoCompleteTextView1"
-        android:layout_below="@+id/autoCompleteTextView1"
+        android:layout_alignLeft="@+id/autoCompleteStockSymbol"
+        android:layout_below="@+id/autoCompleteStockSymbol"
         android:layout_marginTop="20dp" >
     </ListView>
 
@@ -56,7 +56,7 @@
         android:id="@+id/btnFetch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/autoCompleteTextView1"
+        android:layout_above="@+id/autoCompleteStockSymbol"
         android:layout_centerHorizontal="true"
         android:text="@string/btn_label_fetch" />
 
