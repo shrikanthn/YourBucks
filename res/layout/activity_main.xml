@@ -380,6 +380,7 @@
         android:layout_alignRight="@+id/stockChartImage"
         android:layout_below="@+id/stockChartImage"
         android:layout_marginTop="16dp"
+        android:visibility="invisible"
         android:text="Facebook"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -391,6 +392,7 @@
         android:layout_alignBottom="@+id/button2"
         android:layout_alignLeft="@+id/stockChartImage"
         android:layout_alignRight="@+id/TextView18"
+        android:visibility="invisible"
         android:text="News Headlines"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
