@@ -10,5 +10,9 @@
     <string name="hello_world">Enter a term</string>
     <string name="btn_label">Hit Me!</string>
     <string name="btn_label_fetch">Fetch</string>
+    <string name="title_activity_design">DesignActivity</string>
+    <string name="title_activity_scroll">ScrollActivity</string>
+    <string name="title_activity_news">NewsActivity</string>
+    <string name="app_id">715257055207335</string>
 
 </resources>
