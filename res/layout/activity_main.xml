@@ -6,7 +6,7 @@
 
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="473dp"
+    android:layout_height="524dp"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -371,6 +371,28 @@
         android:text="Small Te"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/MarketCapVal"
+        android:layout_alignRight="@+id/stockChartImage"
+        android:layout_below="@+id/stockChartImage"
+        android:layout_marginTop="16dp"
+        android:text="Facebook"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/Button01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignLeft="@+id/stockChartImage"
+        android:layout_alignRight="@+id/TextView18"
+        android:text="News Headlines"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
 </ScrollView>
