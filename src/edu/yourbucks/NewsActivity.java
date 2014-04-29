@@ -47,11 +47,26 @@ public class NewsActivity extends Activity {
 
 		JSONObject res = getData(intent.getStringExtra("term"));
 		try {
-			JSONArray news = res.getJSONObject("result").getJSONObject("News").getJSONArray("Item");
-			for(int i=0; i< news.length(); i++) {
-				JSONObject row = news.getJSONObject(i);
-				links.add(row.getString("Link"));
-				title.add(row.getString("Title"));
+			JSONObject newsList = res.getJSONObject("result").getJSONObject("News");
+			if(newsList.has("Error")) {
+				
+				final AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
+				builder2.setMessage("No news fetched")
+				.setCancelable(false)
+				.setPositiveButton("View", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						dialog.cancel();
+					}
+				});
+				builder2.show();
+				
+			} else {
+				JSONArray news = newsList.getJSONArray("Item");
+				for(int i=0; i< news.length(); i++) {
+					JSONObject row = news.getJSONObject(i);
+					links.add(row.getString("Link"));
+					title.add(row.getString("Title"));
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
